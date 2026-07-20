@@ -4,7 +4,7 @@
     <div class="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" @click="$emit('close')"></div>
 
     <!-- Modal -->
-    <div class="relative w-full max-w-xl md:max-w-4xl bg-white shadow-2xl  overflow-hidden max-h-[90vh] flex flex-col transition-all duration-300">
+    <div class="relative w-full max-w-xl md:max-w-4xl bg-white shadow-2xl overflow-hidden max-h-[90vh] flex flex-col transition-all duration-300">
 
       <!-- Top accent bar -->
       <div class="h-1.5 w-full bg-gradient-to-r from-primary to-primary-light flex-shrink-0"></div>
@@ -28,8 +28,8 @@
             CPCT<span class="text-primary-light">-Youth</span>
           </span>
         </div>
-        <h2 class="text-2xl font-black text-slate-900 mb-1">Join the Movement</h2>
-        <p class="text-xs text-slate-400 mb-8">
+        <h2 class="text-3xl font-black text-slate-800 mb-1">Join the Movement</h2>
+        <p class="text-slate-600 mb-8 max-w-md">
           Register your profile to coordinate your professional expertise and skills with the youth peaceful struggle.
         </p>
 
@@ -39,54 +39,51 @@
           <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center">
             <i class="fas fa-check-circle text-primary text-3xl"></i>
           </div>
-          <h3 class="text-xl font-black text-slate-900">Profile Submitted</h3>
-          <p class="text-xs text-slate-500 max-w-sm leading-relaxed">
+          <h3 class="text-2xl font-black text-slate-800">Profile Submitted</h3>
+          <p class="text-slate-600 max-w-sm leading-relaxed">
             Your profile has been successfully received by the committee. A regional coordinator will verify and activate your account shortly.
           </p>
           <button @click="$emit('close')"
             class="mt-4 px-8 py-3 bg-primary hover:bg-slate-900 text-white font-bold
-                   rounded-xl transition-all text-xs uppercase tracking-wider">
+                   rounded-xl transition-all text-sm uppercase tracking-wider">
             Close Panel
           </button>
         </div>
 
         <!-- Registration form -->
-        <form v-else @submit.prevent="register" class="space-y-6">
+        <form v-else @submit.prevent="register" class="space-y-8">
           
-          <!-- Outer dynamic grid container: single column on mobile, balanced two columns on large screens -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            <!-- Left Grid Column -->
-            <div class="space-y-6">
+            <!-- Left Column -->
+            <div class="space-y-8">
               
-              <!-- SECTION 1: Personal Information -->
-              <div class="rounded-2xl border border-slate-100 p-5 space-y-4 bg-white shadow-sm">
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                  Personal Details
-                </p>
+              <!-- Personal Information -->
+              <div class="space-y-5">
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Personal Details</p>
 
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid grid-cols-2 gap-4">
                   <div>
-                    <label class="field-label">First Name *</label>
+                    <label class="block text-slate-600 text-sm font-medium mb-1.5">First Name *</label>
                     <input v-model="form.first_name" type="text" required placeholder="Given name"
                       class="field-input" />
                   </div>
                   <div>
-                    <label class="field-label">Last Name *</label>
+                    <label class="block text-slate-600 text-sm font-medium mb-1.5">Last Name *</label>
                     <input v-model="form.last_name" type="text" required placeholder="Family name"
                       class="field-input" />
                   </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid grid-cols-2 gap-4">
                   <div>
-                    <label class="field-label">Age *</label>
+                    <label class="block text-slate-600 text-sm font-medium mb-1.5">Age *</label>
                     <input v-model.number="form.age" type="number" min="15" max="45" required
                       placeholder="Years" class="field-input" />
                   </div>
                   <div>
-                    <label class="field-label">Gender *</label>
-                    <select v-model="form.gender" required class="field-input bg-slate-50">
+                    <label class="block text-slate-600 text-sm font-medium mb-1.5">Gender *</label>
+                    <select v-model="form.gender" required class="field-input">
                       <option value="">Select</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
@@ -95,51 +92,49 @@
                 </div>
 
                 <div>
-                  <label class="field-label">Location / City *</label>
+                  <label class="block text-slate-600 text-sm font-medium mb-1.5">Location / City *</label>
                   <input v-model="form.location" type="text" required
                     placeholder="Current city or region"
                     class="field-input" />
                 </div>
               </div>
 
-              <!-- SECTION 2: Contact Details -->
-              <div class="rounded-2xl border border-slate-100 p-5 space-y-4 bg-white shadow-sm">
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Communications</p>
+              <!-- Contact Details -->
+              <div class="space-y-5">
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Communications</p>
 
                 <div>
-                  <label class="field-label">Email Address *</label>
+                  <label class="block text-slate-600 text-sm font-medium mb-1.5">Email Address *</label>
                   <input v-model="form.email" type="email" required placeholder="username@domain.com"
                     class="field-input" />
                 </div>
 
                 <div>
-                  <label class="field-label">Phone Number <span class="text-slate-400 lowercase font-normal">(optional)</span></label>
+                  <label class="block text-slate-600 text-sm font-medium mb-1.5">Phone Number <span class="text-slate-400">(optional)</span></label>
                   <input v-model="form.phone" type="tel" placeholder="Include country code"
                     class="field-input" />
                 </div>
               </div>
             </div>
 
-            <!-- Right Grid Column -->
-            <div class="space-y-6">
+            <!-- Right Column -->
+            <div class="space-y-8">
               
-              <!-- SECTION 3: Professional Background -->
-              <div class="rounded-2xl border border-slate-100 p-5 space-y-4 bg-white shadow-sm">
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                  Professional Profile
-                </p>
+              <!-- Professional Background -->
+              <div class="space-y-5">
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Professional Profile</p>
 
                 <div>
-                  <label class="field-label">Profession / Occupation *</label>
+                  <label class="block text-slate-600 text-sm font-medium mb-1.5">Profession / Occupation *</label>
                   <input v-model="form.profession" type="text" required
                     placeholder="Primary occupation"
                     class="field-input" />
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label class="field-label">Highest Education *</label>
-                    <select v-model="form.education" required class="field-input bg-slate-50">
+                    <label class="block text-slate-600 text-sm font-medium mb-1.5">Highest Education *</label>
+                    <select v-model="form.education" required class="field-input">
                       <option value="">Select</option>
                       <option>High School</option>
                       <option>Diploma / TVET</option>
@@ -149,7 +144,7 @@
                     </select>
                   </div>
                   <div>
-                    <label class="field-label">Specialization <span class="text-slate-400 lowercase font-normal">(optional)</span></label>
+                    <label class="block text-slate-600 text-sm font-medium mb-1.5">Specialization <span class="text-slate-400">(optional)</span></label>
                     <input v-model="form.field_of_study" type="text"
                       placeholder="Field of study"
                       class="field-input" />
@@ -157,29 +152,27 @@
                 </div>
               </div>
 
-              <!-- SECTION 4: Skills & Commitments -->
-              <div class="rounded-2xl border border-slate-100 p-5 space-y-4 bg-white shadow-sm">
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                  Capabilities &amp; Availability
-                </p>
+              <!-- Skills & Commitments -->
+              <div class="space-y-5">
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Capabilities &amp; Availability</p>
 
                 <div>
-                  <label class="field-label">Core Skills * <span class="text-slate-400 lowercase font-normal">(comma-separated)</span></label>
-                  <textarea v-model="form.skills" required rows="2"
+                  <label class="block text-slate-600 text-sm font-medium mb-1.5">Core Skills * <span class="text-slate-400">(comma-separated)</span></label>
+                  <textarea v-model="form.skills" required rows="3"
                     placeholder="e.g. Translation, Logistics, Organizing"
-                    class="field-input resize-none h-14"></textarea>
+                    class="field-input resize-none"></textarea>
                 </div>
 
                 <div>
-                  <label class="field-label">Contribution Goals <span class="text-slate-400 lowercase font-normal">(optional)</span></label>
-                  <textarea v-model="form.aspirations" rows="1"
+                  <label class="block text-slate-600 text-sm font-medium mb-1.5">Contribution Goals <span class="text-slate-400">(optional)</span></label>
+                  <textarea v-model="form.aspirations" rows="2"
                     placeholder="Briefly state your movement objectives"
-                    class="field-input resize-none h-10"></textarea>
+                    class="field-input resize-none"></textarea>
                 </div>
 
                 <div>
-                  <label class="field-label">General Availability *</label>
-                  <select v-model="form.availability" required class="field-input bg-slate-50">
+                  <label class="block text-slate-600 text-sm font-medium mb-1.5">General Availability *</label>
+                  <select v-model="form.availability" required class="field-input">
                     <option value="">Select</option>
                     <option value="full_time">Full-time Engagement</option>
                     <option value="part_time">Part-time Engagement</option>
@@ -192,36 +185,36 @@
             </div>
           </div>
 
-          <!-- SECTION 5: Profile Photo & Account Security (Spans Full Width Below Columns) -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 border-t border-slate-100">
+          <!-- Bottom Section -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-slate-200">
             
-            <!-- Photo Upload Box -->
-            <div class="rounded-2xl border border-slate-100 p-5 flex items-center gap-4 bg-white shadow-sm">
-              <div class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden shrink-0">
+            <!-- Photo Upload -->
+            <div class="rounded-xl border border-slate-200 p-5 flex items-center gap-4">
+              <div class="w-14 h-14 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden shrink-0">
                 <img v-if="photoPreview" :src="photoPreview" alt="preview" class="w-full h-full object-cover" />
-                <i v-else class="fas fa-user text-slate-300 text-lg"></i>
+                <i v-else class="fas fa-user text-slate-400 text-2xl"></i>
               </div>
               <div class="flex-1">
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-1">Identification Photo</p>
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-1">Identification Photo</p>
                 <input ref="photoInput" @change="handlePhoto" type="file" accept="image/*" class="hidden" id="photo-upload" />
                 <label for="photo-upload"
-                  class="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 hover:border-primary/40 rounded-lg text-[11px] font-bold text-slate-700 transition-all">
-                  <i class="fas fa-upload text-[9px]"></i>
-                  Select Image File
+                  class="cursor-pointer inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-300 hover:border-slate-400 rounded-lg text-sm font-medium text-slate-700 transition">
+                  <i class="fas fa-upload"></i>
+                  Choose Photo
                 </label>
               </div>
             </div>
 
-            <!-- Security Credentials Box -->
-            <div class="rounded-2xl border border-slate-100 p-5 space-y-3 bg-white shadow-sm">
-              <p class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Security Credentials</p>
-              <div class="grid grid-cols-2 gap-3">
+            <!-- Security Credentials -->
+            <div class="rounded-xl border border-slate-200 p-5 space-y-4">
+              <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Security Credentials</p>
+              <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="field-label">Password *</label>
+                  <label class="block text-slate-600 text-sm font-medium mb-1.5">Password *</label>
                   <input v-model="form.password" type="password" required placeholder="Minimum 6 chars" class="field-input" />
                 </div>
                 <div>
-                  <label class="field-label">Confirm *</label>
+                  <label class="block text-slate-600 text-sm font-medium mb-1.5">Confirm Password *</label>
                   <input v-model="form.confirm_password" type="password" required placeholder="Verify password" class="field-input" />
                 </div>
               </div>
@@ -229,35 +222,35 @@
           </div>
 
           <!-- Consent Checkbox -->
-          <label class="flex items-start gap-3 cursor-pointer group px-1">
+          <label class="flex items-start gap-3 cursor-pointer group">
             <input v-model="form.consent" type="checkbox" required
-              class="mt-0.5 w-4 h-4 rounded border-slate-300 text-primary focus:ring-primary/20 cursor-pointer shrink-0" />
-            <span class="text-[11px] text-slate-500 leading-relaxed group-hover:text-slate-700 transition-colors">
+              class="mt-1 w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" />
+            <span class="text-sm text-slate-600 leading-relaxed">
               I authorize the coordinating committee to retain my profile details strictly for structured operations within the peaceful resistance movement. Data remains confidential and fully protected. *
             </span>
           </label>
 
-          <!-- Error Alert Panel -->
+          <!-- Error Message -->
           <div v-if="error"
-            class="flex items-start gap-2 bg-red-50 border border-red-100 text-red-600 px-4 py-3 rounded-xl text-xs font-semibold">
-            <i class="fas fa-exclamation-circle mt-0.5 shrink-0"></i>
-            {{ error }}
+            class="flex items-start gap-3 bg-red-50 border border-red-100 text-red-700 px-4 py-3 rounded-xl text-sm">
+            <i class="fas fa-exclamation-circle mt-0.5"></i>
+            <span>{{ error }}</span>
           </div>
 
-          <!-- Form Control Actions -->
+          <!-- Submit Button -->
           <button type="submit" :disabled="loading || !form.consent"
-            class="w-full py-4 bg-primary hover:bg-slate-900 disabled:opacity-50 text-white font-bold rounded-xl text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-lg shadow-primary/10 flex items-center justify-center gap-3">
-            <i v-if="loading" class="fas fa-spinner animate-spin text-xs"></i>
+            class="w-full py-4 bg-primary hover:bg-slate-900 disabled:opacity-50 text-white font-bold rounded-xl text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-3">
+            <i v-if="loading" class="fas fa-spinner animate-spin"></i>
             {{ loading ? 'Processing Registration...' : 'Submit Profile Application' }}
-            <i v-if="!loading" class="fas fa-arrow-right text-xs"></i>
+            <i v-if="!loading" class="fas fa-arrow-right"></i>
           </button>
         </form>
 
-        <!-- Dynamic Modal Switch Links -->
-        <p class="text-center text-xs text-slate-400 mt-6">
-          Registered member?
+        <!-- Login Link -->
+        <p class="text-center text-sm text-slate-500 mt-8">
+          Already a registered member?
           <button @click="$emit('switch-to-login')"
-            class="text-primary hover:text-slate-900 font-bold ml-1 transition-colors">
+            class="text-primary hover:text-slate-800 font-semibold ml-1">
             Sign In Here
           </button>
         </p>
@@ -294,9 +287,9 @@ export default {
         aspirations:    '',
         availability:   '',
         photo:          null,
-        password:          '',
-        confirm_password:  '',
-        consent: false,
+        password:       '',
+        confirm_password: '',
+        consent:        false,
       },
     };
   },
@@ -319,13 +312,16 @@ export default {
       this.error = '';
 
       if (this.form.password !== this.form.confirm_password) {
-        this.error = 'Input passwords do not match.'; return;
+        this.error = 'Input passwords do not match.'; 
+        return;
       }
       if (this.form.password.length < 6) {
-        this.error = 'Password must be 6 characters or longer.'; return;
+        this.error = 'Password must be 6 characters or longer.'; 
+        return;
       }
       if (!this.form.consent) {
-        this.error = 'Operational data consent is mandatory.'; return;
+        this.error = 'Operational data consent is mandatory.'; 
+        return;
       }
 
       this.loading = true;
@@ -365,17 +361,10 @@ export default {
 };
 </script>
 
-<script setup>
-// If utilizing specific icon sets or modular builds inside Vue
-</script>
-
 <style scoped>
-.field-label {
-  @apply block text-[10px] font-black text-slate-500 mb-1.5 uppercase tracking-wider;
-}
 .field-input {
-  @apply w-full px-4 py-2.5 border border-slate-200 bg-slate-50 rounded-xl text-xs
-         focus:outline-none focus:ring-2 focus:ring-primary/10 focus:border-primary
-         transition-all placeholder:text-slate-400 font-semibold text-slate-900;
+  @apply w-full px-4 py-3 border border-slate-300 bg-white rounded-lg
+         focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary
+         text-slate-700 placeholder:text-slate-400 text-sm transition-all;
 }
 </style>
